@@ -1,0 +1,28 @@
+table {
+  background-color: #2AD0B6;
+  border-style: double;
+  border-color:#9A94F4;
+}
+
+p {
+  width: 300px;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+img {
+  width: 400px;
+  height: auto;
+}
+
+td {
+  border-style: dashed;
+  border-color: #9A94F4;
+}
+
+.fred {
+  border-color: green;
+}
+
+.george {
+  border-color: blue;
+}

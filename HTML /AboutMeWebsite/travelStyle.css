@@ -1,0 +1,38 @@
+table {
+  width: 100%
+}
+
+#placesBeen {
+  list-style-type: "\1f4cc";
+}
+
+label:hover {
+  background-color:#6b9080;
+  color: #cce3de;
+}
+.placesHaveBeen {
+  padding: 5%;
+  margin-left: 10px;
+  text-align: left;
+  width: 700px;
+  padding:10px;
+  border-radius: 30px;
+  background-color: #EAF4F4;
+}
+.placesToGo {
+  padding: 4%;
+  margin: 3%;
+  background-color: #EAF4F4;
+  text-align: left;
+  border: shadow;
+}
+
+
+h2 {
+  color: #B98B73;
+}
+
+td {
+  border-radius: 30px;
+  background-color: #6B9080;
+}
