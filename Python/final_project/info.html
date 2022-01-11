@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>COVID Data: Why?</title>
+    <link rel="stylesheet" href="styling.css">
+    <link rel="icon" href="SARS-CoV-2.png">
+  </head>
+
+  <body>
+
+    <nav>
+      <ul class="nav-bar">
+        <li class="nav"><a href="info.html">More info</a></li>
+        <li class="nav"><a href="trends.html">Trends</a></li>
+        <li class="nav"><a href="vaccinations.html">Vaccinations</a></li>
+        <li class="nav"><a href="unemployment.html">Unemployment</a></li>
+        <li class="nav"><a href="stocks.html">stocks</a></li>
+        <li class="nav"><a href="Findings_Home.html">Findings/Home</a></li>
+      </ul>
+    </nav>
+    <div class="allText">
+    <h1>(1) Covid: Why this data?</h1>
+    <p>After having lived through the pandemic, which has affected my life, and the lives of basically all 8 billion people who live on Earth, I wanted to study how the outbreak of COVID affected various aspects of life. I focused on the economy (stock indexes, unemployment rate), and peoples everchanging interests (search trends). Furthermore, I wanted to take a look at how the distribution of the vaccine has impacted the COVID case count, and if the data points to the efficay of the vaccine. TLDR: it does! <b>go get vaccinated</b>, if you haven't already.  </p>
+    <br>
+
+    <h1>(2) Covid: What is the data? Where did it come from?</h1>
+      <h4> Daily US COVID Case Count</h4>
+      <ul>
+        <li><b>Source:</b> World Health Organization</li>
+        <li><b>Link:</b> <a href=https://covid19.who.int/info/>WHO Data</a></li>
+        <li><b>How to access this data?</b> Hit the link and select data download, and then click on the link under "Daily cases and deaths by date reported to WHO."</li>
+        <li><b>How did I use this data?</b> I used this data in order to derive the daily new cases you see in many of my graphs. The new cases shown is centralized to the US, I did this by filering the data where the Country Code is the "US." Then I merged this data at the date with many of my other sources in order to place them on the same graph. This csv includes a lot of interesting data and was very interesting to explore!</li>
+      </ul>
+      <h4>New Daily US Vaccinations</h4>
+      <ul>
+        <li><b>Source:</b> Our World in Data</li>
+        <li><b>Link: </b><a href="https://ourworldindata.org/covid-vaccinations">COVID Vaccine Data</a>
+        <li><b>How to access this data?</b> Hit the link and press on the option to download in CSV format.</li>
+        <li><b>How did I use this data?</b> This CSV includes a lot of data, but I filtered for the United States as the country and focused on the "new_vaccinations" column, and merged that and the date daily count with the new COVID cases per day in the US. Then I displayed this data on the same x-axis (dates), and plotted it on a different y-axis to reflect the differing scales of the data. This allowed me to draw a connection between decreasing COVID rates, and increasing vaccination rates, proving the effectiveness of the vaccine.</li>
+      </ul>
+      <h4>Monthly US Unemployment Rate, S&P 500, DOW Jones Industry, and NASDAQ Daily Close</h4>
+      <ul>
+        <li><b>Source:</b> Federal Reserve Economic Database (FRED)</li>
+        <li><b>Link: </b> <br><a href=https://fred.stlouisfed.org/series/UNRATE>Unemployment Rate</a></li><a href="https://fred.stlouisfed.org/series/SP500">S&P 500 Daily Close</a>, <a href="https://fred.stlouisfed.org/series/DJIA">Dow Jones Daily Close</a>, <a href="https://fred.stlouisfed.org/series/NASDAQCOM">NASDAQ Close</a>
+        <li><b>How to access this data?</b> Hit the link and press the download button, and then click on csv option. This is true for all of the FRED data listed above. Shout out to my sister for introducing me to this data depository. </li>
+        <li><b>How did I use this data?</b> I used this data in order to weigh the economic effects of the virus. To my surprise, I saw very similar trends among all of the indexes. The findings regarding the unemployment rate were less of a surprise; the rise in the unemployment rate was heavily reported as it had a significant impact on the lives of many Americans. To generate my graph(s), I merged this data on DATE with the COVID data in order to place the data on a graph with the new daily COVID cases, and placed the economic data on an alternate y-axis on the right, with a different scale factor. I was able to derive the percent change since January 2020 in each of stock market indexes by taking every list item and dividing it by the first list item and subtracting one.</li>
+      </ul>
+      <h4>Russell 2000 Closing Price</h4>
+      <ul>
+        <li><b>Source:</b> Yahoo Finance</li>
+        <li><b>Link: </b><a href="https://finance.yahoo.com/quote/%5ERUT/history?period1=1465430400&period2=1623283200&interval=1d&filter=history&frequency=1d&includeAdjustedClose=true">Russell 2000 Close</a>
+        <li><b>How to access this data?</b> The link above is filtered (in time period) to the data I downloaded, but you can change this time period to the dates of your choice, hit apply, and then press download (automatically in csv format).</li>
+        <li><b>How did I use this data?</b> The Russell is a small cap index, which means it includes companies with smaller market captilizations than the other indexes I have displayed. I expected the Russell 2000 to preform worse than the other indexs, because I would expect smaller companies to be more effected by the finical and logisitcal difficulties imposed by COVID. To display this data, I performed similar operations as to the data above (including the percent change function), but I filtered for the "Close" specifically as this csv included other data like the daily high and low.</li>
+      </ul>
+      <h4>Search Trends</h4>
+      <ul>
+        <li><b>Source:</b> Google Trends</li>
+        <li><b>Link: </b><a href="https://trends.google.com/trends/explore?date=2019-06-01%202021-06-11&geo=US&q=%2Fm%2F01cpyy,%2Fm%2F04rlf,%2Fm%2F0866r,%2Fm%2F06ntj,%2Fm%2F07__7">Google Trends Data Comparison</a>
+        <li><b>How to access this data?</b> The link above is filtered (to include topics Coronavirus, Music, Sports, Weather, and Vaccine) to the data I downloaded, but you can change the topics by typing various things in place of the topics I have selected, and change the time period, and then press the download icon on the right hand side of the graph (automatically in csv format).</li>
+        <li><b>How did I use this data?</b> I decided to use this data to see if there was any correlation between people's search interests ("Numbers represent search interest relative to the highest point on the chart for the given region and time. A value of 100 is the peak popularity for the term. A value of 50 means that the term is half as popular. A score of 0 means there was not enough data for this term.) prior to  and throughout COVID. I was not surprised to see a spike in the searches for COVID when the virus began, and a spike for the topic Vaccine during the beginning phases of distribution, but I was surprised to see how quickly these topics dropped off from their spikes. Additionally, I was surprised that the other popular topics were not significantly impacted by the quarantine period. In order to plot the data, I mapped the data included in the csv to the search interest for the various topics including: Coronavirus, Vaccine, Sports, Weather and Music.</li>
+      </ul>
+      <h1>(5) What data work I have learned?</h1>
+      I utlized the pandas library, which I had some experience with, but I had to learn more about the functions it includes, and clarify many of their uses. For instance, I explored the pandas merge function in order to work with data from mutilple sources, specifically I merged my data on the "Date" (the constant x-axis) in many of my graphs. Furthermore, I had to explore the functions of matplotlib in order to graph on the same x-axis and alternatively scaled y-axes in order to display much of my data in graphs (the twinx() function). My biggest learning came from figuring out how to format my labels, especially the dates shown on the x-axis.
+      <h1>(6) What help I recieved?</h1>
+      I utilized the pandas and matplotlib documentation, and stackoverflow to clarify the uses of certain functions as well as find new functions, and solve issues. My dad and sister were also super helpful throughout!
+      <h3>(7) Comments</h3>
+      Debugging code sucks and is the worst but I'm pretty proud of what I've put together (really hoping for an A :p)!
+    </div>
+  </body>
+</html>

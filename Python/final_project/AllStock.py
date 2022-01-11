@@ -1,0 +1,79 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+import datetime as dt
+
+covid_data = pd.read_csv('WHO-COVID-19-global-data.csv') #pull in COVID data from WHO
+US_data = covid_data[covid_data['Country_code'] == 'US'] #filter for US data
+US_data["Date"]=pd.to_datetime(US_data.Date) #covert to pythons datetime format
+print(US_data)
+US_data_New = US_data[["Date", 'New_cases']] #only include these 2 columns 
+#print(US_data_New.head())
+
+
+sp500_data = pd.read_csv('SP500.csv') #pull in SP500 Date
+sp500_valid = sp500_data[sp500_data['SP500'] != '.'] #take out data where the market is closed indicated by "." in the data set
+sp500_valid["DATE"]=pd.to_datetime(sp500_valid.DATE) #covert to pythons datetime format
+sp500_valid["SP500"]=pd.to_numeric(sp500_valid.SP500) #convert string to integer 
+#print(sp500_valid.head())
+
+djia_data = pd.read_csv('DJIA.csv') #pull in DJIA Date
+#print(djia_data.head())
+djia_valid = djia_data[djia_data['DJIA'] != '.'] #take out data where the market is closed indicated by "." in the data set
+djia_valid["DATE"]=pd.to_datetime(djia_valid.DATE) #covert to pythons datetime format
+djia_valid["DJIA"]=pd.to_numeric(djia_valid.DJIA)
+
+rut_data = pd.read_csv('^RUT.csv') #pull in Russell 2000 Date
+#print(djia_data.head())
+#rut_valid = rut_data[rut_data['Close'] != '.'] #take out data where the market is closed indicated by "." in the data set
+rut_data["Date"]=pd.to_datetime(rut_data.Date) #covert to pythons datetime format
+rut_data["Close"]=pd.to_numeric(rut_data.Close)
+rut_data_New = rut_data[["Date", 'Close']]
+
+mergedData = sp500_valid.merge(US_data_New,left_on='DATE', right_on='Date') #merge SP500 and US covid data on date
+print(mergedData)
+mergedData2 = djia_valid.merge(US_data_New,left_on='DATE', right_on='Date') #merge DJIA and US covid data on date
+mergedData3 = rut_data.merge(US_data_New,left_on='Date', right_on='Date') #merge Russell 2000 and US covid data on date
+
+dates_list = mergedData['Date'].values.tolist() #pull the dates into list format
+#dates_list_formatted=[dt.datetime.strptime(date,'%Y-%m-%d').date() for date in dates_list]
+new_cases = mergedData["New_cases"].values.tolist() #pull the new cases to list format 
+sp500_close = mergedData["SP500"].values.tolist() #pull the sp500 close to list format
+djia_close = mergedData2["DJIA"].values.tolist() #pull the djia close to list format
+rut_close = mergedData3["Close"].values.tolist()
+
+x_values = dates_list
+
+# create subplot of covid data 
+fig, ax1 = plt.subplots()
+
+ax1.set_xlabel('date')
+ax1.set_ylabel('covid case count', color='tab:red')
+ax1.plot(x_values, new_cases, label = "New COVID Cases", color='tab:red')
+ax1.tick_params(axis='y', labelcolor= 'tab:red')
+
+#create subplot of sp500 data
+ax2 = ax1.twinx() #same x-axis, different y-axis
+ax2.set_ylabel('Close Price')
+ax2.plot(x_values, sp500_close, label = "S&P 500 Close", color='blue')
+ax2.plot(x_values, djia_close, label = "DJIA Close", color='green')
+ax2.plot(x_values, rut_close, label = "Russell 2000 Close", color='purple')
+ax2.tick_params(axis='y')
+
+
+fig.tight_layout()
+
+#create legends for both line graphs (bc matplotlib is annoying)
+lines_1, labels_1 = ax1.get_legend_handles_labels()
+lines_2, labels_2 = ax2.get_legend_handles_labels()
+lines = lines_1 + lines_2
+labels = labels_1 + labels_2
+ax1.legend(lines, labels, loc=0)
+
+
+
+plt.show()
+
+
+
+
